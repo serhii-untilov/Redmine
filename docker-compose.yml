@@ -14,7 +14,15 @@ services:
 
 
   db:
-    image: postgres:16-alpine
+    container_name: redmine-db
+    build:
+      context: .
+      dockerfile: ./postgres/Dockerfile
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+    image: untilov/redmine-db
     restart: always
     hostname: redmine
     expose:
@@ -22,9 +30,6 @@ services:
     ports:
       - 5632:5432
     volumes:
-      - ./init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
-      - ./pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
-      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
       - ./postgres-data:/var/lib/postgresql/data
       - ./postgres-backup:/backup
     healthcheck:
