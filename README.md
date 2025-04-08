@@ -1,6 +1,6 @@
-# Redmine
+# Redmine in Docker
 
-redmine.untilov.com.ua [Live Demo](https://redmine.untilov.com.ua)
+[Live Demo](https://redmine.untilov.com.ua)
 
 ## Quick Start
 
