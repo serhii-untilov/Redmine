@@ -1,0 +1,42 @@
+version: '3.1'
+
+services:
+
+  app:
+    image: redmine
+    restart: always
+    ports:
+      - 8080:3000
+    env_file:
+      - ./.env
+    volumes:
+      - ./files:/usr/src/redmine/files
+
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    hostname: redmine
+    expose:
+      - 5432
+    ports:
+      - 5632:5432
+    volumes:
+      - ./init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+      - ./pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./postgres-backup:/backup
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    env_file:
+      - ./.env
+
+networks:
+  default:
+    name: redmine-network
+    driver: bridge
+    # external: true
