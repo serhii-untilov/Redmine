@@ -22,5 +22,5 @@ chmod +x ./logs
 chmod +x ./stats
 ./stop
 docker image prune -f
-docker compose pull --parallel
+docker compose pull
 ./start
