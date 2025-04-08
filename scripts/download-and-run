@@ -13,7 +13,7 @@ curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmi
 curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/logs
 curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/stats
 if ! [ -f ./.env ]; then
-    curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Payroll-SMB/master/.env
+    curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/.env
 fi
 chmod +x ./start
 chmod +x ./stop
