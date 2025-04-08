@@ -1,0 +1,24 @@
+#!/bin/sh
+cd ~
+if ! [ -d ./redmine ]; then
+    echo "The ./redmine folder does not exist. Let's create it."
+    mkdir redmine
+fi
+cd redmine
+echo 'Downloading scripts:'
+curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/docker-compose.yml
+curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/start
+curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/stop
+curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/update
+curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/logs
+curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Redmine/master/stats
+if ! [ -f ./.env ]; then
+    curl -O -S --progress-bar https://raw.githubusercontent.com/serhii-untilov/Payroll-SMB/master/.env
+fi
+chmod +x ./start
+chmod +x ./stop
+chmod +x ./update
+chmod +x ./logs
+chmod +x ./stats
+./stop
+docker compose pull --parallel

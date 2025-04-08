@@ -1,0 +1,2 @@
+#!/bin/sh
+docker exec redmine-db pg_restore -d redmine /backup/redmine.dump

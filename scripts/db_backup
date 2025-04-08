@@ -1,0 +1,2 @@
+#!/bin/sh
+docker exec -i redmine-db pg_dump -U redmine redmine --format=c -f /backup/redmine.dump
