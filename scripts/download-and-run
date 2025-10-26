@@ -1,5 +1,5 @@
 #!/bin/sh
-cd ~
+# cd ~
 if ! [ -d ./redmine ]; then
     echo "The ./redmine folder does not exist. Let's create it."
     mkdir redmine

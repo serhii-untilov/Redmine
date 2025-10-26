@@ -20,7 +20,7 @@ Note: Docker required.
 ``` bash
 curl -s https://raw.githubusercontent.com/serhii-untilov/Redmine/master/scripts/download | bash
 
-cd ~/redmine
+cd ./redmine
 ```
 
 In the .env file replace the variables with desired values: DATABASE_USERNAME, DATABASE_PASSWORD, POSTGRES_USER, POSTGRES_PASSWORD, PGUSER, etc.
